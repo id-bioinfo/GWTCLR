@@ -22,7 +22,7 @@ D19 = {15, 21, 53, 141, 7, 1, 19, 40, 71};
 DATA = {D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, 
    D15, D16, D17, D18, D19};
    
-(*The following codes are basic code used to construct the final function, not important for using GWTALR*)   
+(*The following codes are basic code used to construct the final function, not important for using GWTCLR*)   
 (*define probability function*)
 prob[x_, beta_] := Exp[x.beta]/(1 + Exp[x.beta]);
 
@@ -287,8 +287,8 @@ Lik[a_, b_, band_, beta_, d_, DATA_] := (Lik1 = 0;
 
 
 
-(*The following codes give several function for GWTALR*)
-(*FinCom is used to give the raw GWTALR estimates of beta and the corresponding log-likelihood in each step of the iteration. a is the initial value of the iteration，d is the autocorrelation parameter，u,v are the geographical coordinates，band is the bandwidth of geograhical weight function, DATA is the data which used*)
+(*The following codes give several function for GWTCLR*)
+(*FinCom is used to give the raw GWTCLR estimates of beta and the corresponding log-likelihood in each step of the iteration. a is the initial value of the iteration，d is the autocorrelation parameter，u,v are the geographical coordinates，band is the bandwidth of geograhical weight function, DATA is the data which used*)
 (*We set a default 10 iteration. You can set your own iteration times by changing Print[N[Lik[u, v, band, beta, d, DATA]]], {i, 10}] to Print[N[Lik[u, v, band, beta, d, DATA]]], {i, any value}]*)
 FinCom[a_, d_, u_, v_, band_, DATA_] := (beta = a;
   Do[beta = 
@@ -297,7 +297,7 @@ FinCom[a_, d_, u_, v_, band_, DATA_] := (beta = a;
         DE1[u, v, band, beta, d, DATA]]]; Print[beta]; 
    Print[N[Lik[u, v, band, beta, d, DATA]]], {i, 10}])
 
-(*BetaFinCom is used to give the raw GWTALR estimates after 10 iterations, you can  time by changing {ichange the iteration,10} to {i, any value}, all other defination are concur with the FinCom*)
+(*BetaFinCom is used to give the raw GWTCLR estimates after 10 iterations, you can  time by changing {ichange the iteration,10} to {i, any value}, all other defination are concur with the FinCom*)
 BetaFinCom[a_, d_, u_, v_, band_, DATA_] := (beta = a;
   Do[beta = 
     N[beta - 
@@ -336,7 +336,7 @@ ResAP[a_, b_, n_, u_, v_, band_,
 
  
  
- (*DEV is a inner function of RawVar, RawVar gives the variance-covariance of the raw estimates of GWTALR*)
+ (*DEV is a inner function of RawVar, RawVar gives the variance-covariance of the raw estimates of GWTCLR*)
 (*u,v are geographical coordinates，band is the bandwidth of geographical weight function，d is the autocorrelation parameter，DATA is the data for analysis*)
 DEV[u_, v_, band_, beta_, d_, DATA_] := (D1V = 0;
    D1Set = Split[DATA, #1[[3 ;; 4]] == #2[[3 ;; 4]] &];
@@ -370,7 +370,7 @@ RawTe[u_, v_, band_, d_,
       N[beta[[i]]] + 1.96*N[Sqrt[betaVar[[i]][[i]]]], {i, 1, 
      Length[DATA[[1]]] - 5}]; B);
 
-(*PaDEV is a inner function of PaRawCv, PaRawCv gives the variance-covariance of a pair of two raw eatimate of GWTALR*)
+(*PaDEV is a inner function of PaRawCv, PaRawCv gives the variance-covariance of a pair of two raw eatimate of GWTCLR*)
 (*u and v are the geographical coordinates，band is the bandwidth of geographical weight function，d is the aurocorrelation parameter，betaa is the raw estimates of data a，betab is the raw estimates of data b，DATAa is data a for analysis, DATAb is data b for analysis*)
 PaDEV[u_, v_, band_, betaa_, betab_, d_, DATAa_, DATAb_] := (PaD1V = 0;
    D1Set = Split[DATAa, #1[[3 ;; 4]] == #2[[3 ;; 4]] &];
@@ -387,9 +387,14 @@ PaRawCv[u_, v_, band_, betaa_, betab_, d_, DATAa_, DATAb_] :=
     betaa, betab, d, DATAa, DATAb].Inverse[
     N[DE2[u, v, band, betab, d, DATAb]]];
     
-(*The following is for the final refined GWTALR*)
-(*RawEs gives you a set of raw GWTALR estimates for a set of times which you are interested*)
-(*Tim is a vector with elements being the time point at which raw estimates of GWTALR is calculated，tao is the range of the τ-nearest set，d is the autocorrelation parameter，u and v are geographical coordinates，band is the bandwidth of geographical weight function，DATA is the data for analysis*)
+(*The following is for the final refined 
+
+
+
+
+ALR*)
+(*RawEs gives you a set of raw GWTCLR estimates for a set of times which you are interested*)
+(*Tim is a vector with elements being the time point at which raw estimates of GWTCLR is calculated，tao is the range of the τ-nearest set，d is the autocorrelation parameter，u and v are geographical coordinates，band is the bandwidth of geographical weight function，DATA is the data for analysis*)
 RawEs[Tim_, tao_, d_, u_, v_, band_, 
    DATA_] := (betaa = Table[0, {j, Length[DATA[[1]]] - 5}]; 
    betaH = Table[betaa, {j, Length[Tim]}];
@@ -398,7 +403,7 @@ RawEs[Tim_, tao_, d_, u_, v_, band_,
      BetaFinCom[betaa, d, u, v, band, TNear[t, tao, DATA]]; 
     ste += 1, {t, Tim}]; betaH);
 (*RawCv gives the variance-covariance of the raw estimates set which obtained from RawEs*)
-(*Tim is a vector with elements being the time point at which raw estimates of GWTALR is calculated，tao is the range of the τ-nearest set，d is the autocorrelation parameter，u and v are geographical coordinates，band is the bandwidth of geographical weight function，betaS is the raw estimates set obtained from RawEs, DATA is the data for analysis*)
+(*Tim is a vector with elements being the time point at which raw estimates of GWTCLR is calculated，tao is the range of the τ-nearest set，d is the autocorrelation parameter，u and v are geographical coordinates，band is the bandwidth of geographical weight function，betaS is the raw estimates set obtained from RawEs, DATA is the data for analysis*)
 RawCv[Tim_, tao_, d_, u_, v_, band_, betaS_, DATA_] := 
   Table[PaRawCv[u, v, band, betaS[[i]], betaS[[j]], d, 
     TNear[Tim[[i]], tao, DATA], TNear[Tim[[j]], tao, DATA]], {i, 
@@ -407,8 +412,8 @@ RawCv[Tim_, tao_, d_, u_, v_, band_, betaS_, DATA_] :=
 
 (*Polynomial non-parametric smoothing*)
 
-(*RefineEs gives the refined estimates of GWTALR*)
-(*t is the time points at which refined estimates of GWTALR calculated，p is the  of the Polynomial non-parametric smoothing，h is the bandwidth of the Polynomial kernel function，Tim is a vector with elements being the time point at which raw estimates of GWTALR is calculated，betaS is the raw estimates set obtained from RawEs*)
+(*RefineEs gives the refined estimates of GWTCLR*)
+(*t is the time points at which refined estimates of GWTCLR calculated，p is the  of the Polynomial non-parametric smoothing，h is the bandwidth of the Polynomial kernel function，Tim is a vector with elements being the time point at which raw estimates of GWTCLR is calculated，betaS is the raw estimates set obtained from RawEs*)
 RefineEs[t_, p_, h_, Tim_, 
    betaS_] := (DesM = Table[Table[0, {j, 0, p}], {i, Length[Tim]}]; 
    Do[DesM[[n]] = Table[Tim[[n]]^m, {m, 0, p}], {n, Length[Tim]}]; 
@@ -417,7 +422,7 @@ RefineEs[t_, p_, h_, Tim_,
      DesM].Omig.betaS);
 
 (*RefineVar gives the variance-covariance of the refined estimates*)
-(*t is the time points at which refined estimates of GWTALR calculated，p is the  of the Polynomial non-parametric smoothing，h is the bandwidth of the Polynomial kernel function，Tim is a vector with elements being the time point at which raw estimates of GWTALR is calculated，Cv is the variance-covariance of the raw estimates set obtained from RawCv*)
+(*t is the time points at which refined estimates of GWTCLR calculated，p is the  of the Polynomial non-parametric smoothing，h is the bandwidth of the Polynomial kernel function，Tim is a vector with elements being the time point at which raw estimates of GWTCLR is calculated，Cv is the variance-covariance of the raw estimates set obtained from RawCv*)
 RefineVar[t_, p_, h_, Tim_, Cv_] := (A = 0; 
   DesM = Table[Table[0, {j, 0, p}], {i, Length[Tim]}]; 
   Do[DesM[[n]] = Table[Tim[[n]]^m, {m, 0, p}], {n, Length[Tim]}]; 
@@ -428,8 +433,8 @@ RefineVar[t_, p_, h_, Tim_, Cv_] := (A = 0;
         DesM].Omig[[j]])*Cv[[i, j]], {i, 1, Length[Tim]}, {j, 1, 
     Length[Tim]}]; A)
 
-(*PlotRefine gives the graph of the refined estimates of GWTALR along with their confidence interval*)
-(*a is the lower boundary of the time period, b is the upper boundary of the time period, n means that we are drawing the nth coefficiency, p is the  of the Polynomial non-parametric smoothing，h is the bandwidth of the Polynomial kernel function，Tim is a vector with elements being the time point at which raw estimates of GWTALR is calculated，betaS is the raw estimates set obtained from RawEs, Cv is the variance-covariance of the raw estimates set obtained from RawCv*)
+(*PlotRefine gives the graph of the refined estimates of GWTCLR along with their confidence interval*)
+(*a is the lower boundary of the time period, b is the upper boundary of the time period, n means that we are drawing the nth coefficiency, p is the  of the Polynomial non-parametric smoothing，h is the bandwidth of the Polynomial kernel function，Tim is a vector with elements being the time point at which raw estimates of GWTCLR is calculated，betaS is the raw estimates set obtained from RawEs, Cv is the variance-covariance of the raw estimates set obtained from RawCv*)
 PlotRefine[a_, b_, n_, p_, h_, Tim_, betaS_, Cv_] := 
   Plot[{RefineEs[x, p, h, Tim, betaS][[n]] - 
      1.96*Sqrt[RefineVar[x, p, h, Tim, Cv][[n, n]]], 
