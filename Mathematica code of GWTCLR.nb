@@ -1,0 +1,3273 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    120768,       3263]
+NotebookOptionsPosition[    120508,       3249]
+NotebookOutlinePosition[    120865,       3265]
+CellTagsIndexPosition[    120822,       3262]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Data", " ", "should", " ", "be", " ", "defined", " ", "in", " ", "a", " ",
+     "fixed", " ", "pattern", " ", "as", " ", "following", " ", "example"}], 
+   "*)"}], "\n", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"number", " ", "of", " ", "event", " ", "happens"}], "\:ff0c", 
+    RowBox[{"total", " ", "number", " ", "of", " ", "event"}], "\:ff0c", 
+    RowBox[{"latitude", " ", "u"}], "\:ff0c", 
+    RowBox[{"longitude", " ", "v"}], "\:ff0c", 
+    RowBox[{"sampling", " ", "time"}], "\:ff0c", "intercept", "\:ff0c", 
+    RowBox[{"independent", " ", "variable", " ", "1"}], "\:ff0c", 
+    RowBox[{"independent", " ", "variable", " ", "2"}], ",", "...", ",", 
+    RowBox[{"independent", " ", "variable", " ", "p"}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"D1", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "18", ",", "20", ",", "32", ",", "134", ",", "1", ",", "1", ",", "34", 
+       ",", "80", ",", "90"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D2", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "34", ",", "56", ",", "32", ",", "134", ",", "2", ",", "1", ",", "33", 
+       ",", "93", ",", "60"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D3", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "21", ",", "43", ",", "32", ",", "134", ",", "3", ",", "1", ",", "29", 
+       ",", "110", ",", "49"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D4", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "13", ",", "14", ",", "32", ",", "134", ",", "4", ",", "1", ",", "35", 
+       ",", "120", ",", "93"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D5", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "12", ",", "31", ",", "32", ",", "134", ",", "5", ",", "1", ",", "28", 
+       ",", "78", ",", "38"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D6", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "56", ",", "93", ",", "32", ",", "134", ",", "6", ",", "1", ",", "19", 
+       ",", "102", ",", "60"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D7", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "12", ",", "32", ",", "134", ",", "7", ",", "1", ",", "10", 
+       ",", "91", ",", "8"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D8", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "3", ",", "45", ",", "32", ",", "134", ",", "8", ",", "1", ",", "11", 
+       ",", "82", ",", "7"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D9", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "21", ",", "24", ",", "75", ",", "163", ",", "1", ",", "1", ",", "13", 
+       ",", "45", ",", "88"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D10", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "14", ",", "15", ",", "75", ",", "163", ",", "2", ",", "1", ",", "10", 
+       ",", "34", ",", "93"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D11", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "51", ",", "54", ",", "75", ",", "163", ",", "3", ",", "1", ",", "12", 
+       ",", "25", ",", "94"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D12", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "24", ",", "54", ",", "75", ",", "163", ",", "4", ",", "1", ",", "18", 
+       ",", "31", ",", "45"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D13", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "43", ",", "75", ",", "163", ",", "5", ",", "1", ",", "42", 
+       ",", "142", ",", "2.3"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D14", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "32", ",", "105", ",", "75", ",", "163", ",", "6", ",", "1", ",", "34", 
+       ",", "39", ",", "30"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D15", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "21", ",", "67", ",", "75", ",", "163", ",", "7", ",", "1", ",", "27", 
+       ",", "65", ",", "31"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D16", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "3", ",", "65", ",", "75", ",", "163", ",", "8", ",", "1", ",", "39", 
+       ",", "76", ",", "4.6"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D17", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "45", ",", "103", ",", "53", ",", "141", ",", "1", ",", "1", ",", "36", 
+       ",", "65", ",", "43"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D18", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "13", ",", "42", ",", "53", ",", "141", ",", "2", ",", "1", ",", "26", 
+       ",", "49", ",", "31"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"D19", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "15", ",", "21", ",", "53", ",", "141", ",", "7", ",", "1", ",", "19", 
+       ",", "40", ",", "71"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"DATA", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "D1", ",", "D2", ",", "D3", ",", "D4", ",", "D5", ",", "D6", ",", "D7", 
+       ",", "D8", ",", "D9", ",", "D10", ",", "D11", ",", "D12", ",", "D13", 
+       ",", "D14", ",", "D15", ",", "D16", ",", "D17", ",", "D18", ",", 
+       "D19"}], "}"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "The", " ", "following", " ", "codes", " ", "are", " ", "basic", " ", 
+      "code", " ", "used", " ", "to", " ", "construct", " ", "the", " ", 
+      "final", " ", "function"}], ",", 
+     RowBox[{
+     "not", " ", "important", " ", "for", " ", "using", " ", "GWTCLR"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"define", " ", "probability", " ", "function"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"prob", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"Exp", "[", 
+       RowBox[{"x", ".", "beta"}], "]"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        RowBox[{"Exp", "[", 
+         RowBox[{"x", ".", "beta"}], "]"}]}], ")"}]}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"define", " ", "temporal", " ", "correlation", " ", "function"}],
+      ",", 
+     RowBox[{
+     "t1", " ", "and", " ", "t2", " ", "is", " ", "the", " ", "time"}], ",", 
+     RowBox[{
+     "and", " ", "d", " ", "is", " ", "the", " ", "temporal", " ", 
+      "correlation", " ", "parameter"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"rou", "[", 
+        RowBox[{"t1_", ",", "t2_", ",", "d_"}], "]"}], ":=", 
+       RowBox[{"Exp", "[", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"Abs", "[", 
+           RowBox[{"t1", "-", "t2"}], "]"}]}], "*", 
+         RowBox[{"Exp", "[", "d", "]"}]}], "]"}]}], ";", 
+      RowBox[{
+      "a", " ", "alternative", " ", "choice", " ", "for", " ", "temporal", 
+       " ", "correlation", " ", "function"}]}], ",", 
+     RowBox[{
+     "you", " ", "can", " ", "define", " ", "your", " ", "own", " ", 
+      "function", " ", "and", " ", "replace", " ", "the", " ", "following", 
+      " ", "one"}], ",", 
+     RowBox[{
+     "but", " ", "please", " ", "follow", " ", "my", " ", "pattern", " ", 
+      "by", " ", "defining", " ", "the", " ", "function", " ", "as", " ", 
+      RowBox[{"rou", "[", 
+       RowBox[{"t1_", ",", "t2_", ",", "d_"}], "]"}]}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rou", "[", 
+      RowBox[{"t1_", ",", "t2_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{"d", "^", 
+      RowBox[{"(", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"t1", "-", "t2"}], "]"}], ")"}]}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"tao", "-", 
+     RowBox[{"nearest", " ", "set", " ", "capture", " ", "function"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "t", " ", "is", " ", "the", " ", "time", " ", "which", " ", "we", " ", 
+      "need"}], "\:ff0c", 
+     RowBox[{
+      RowBox[{
+      "tao", " ", "is", " ", "the", " ", "range", " ", "of", " ", "the", " ", 
+       "tao"}], "-", 
+      RowBox[{"nearest", " ", "set"}]}], "\:ff0c", 
+     RowBox[{
+      RowBox[{
+      "DATA", " ", "is", " ", "the", " ", "data", " ", "which", " ", "used", 
+       " ", "to", " ", "devide", " ", "into", " ", "tao"}], "-", 
+      RowBox[{"nearest", " ", "sets"}]}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"TNear", "[", 
+      RowBox[{"t_", ",", "tao_", ",", "DATA_"}], "]"}], ":=", 
+     RowBox[{"Pick", "[", 
+      RowBox[{"DATA", ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Abs", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"DATA", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "[", 
+             RowBox[{"[", "5", "]"}], "]"}], "-", "t"}], "]"}], 
+          "\[LessEqual]", "tao"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "DATA", "]"}]}], "}"}]}], "]"}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "define", " ", "geographical", " ", "weighted", " ", "function"}], ",", 
+     RowBox[{
+      RowBox[{
+      "this", " ", "is", " ", "Gaussian", " ", "distance", " ", "decay"}], 
+      "-", 
+      RowBox[{"based", " ", "function"}]}], ",", 
+     RowBox[{
+     "you", " ", "can", " ", "define", " ", "your", " ", "own", " ", 
+      "function"}], ",", 
+     RowBox[{
+     "but", " ", "you", " ", "need", " ", "follow", " ", "my", " ", "pattern",
+       " ", "by", " ", "defining", " ", "the", " ", "function", " ", "as", 
+      " ", 
+      RowBox[{"GeoW", "[", 
+       RowBox[{"x_", ",", "y_", ",", "band_"}], "]"}]}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"GeoW", "[", 
+      RowBox[{"x_", ",", "y_", ",", "band_"}], "]"}], ":=", 
+     RowBox[{"N", "[", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"QuantityMagnitude", "[", 
+             RowBox[{"GeoDistance", "[", 
+              RowBox[{"x", ",", 
+               RowBox[{"y", "[", 
+                RowBox[{"[", 
+                 RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "]"}], "]"}], 
+            ")"}], "^", "2"}], ")"}]}], "/", 
+        RowBox[{"(", 
+         RowBox[{"band", "^", "2"}], ")"}]}], "]"}], "]"}]}], ";"}], "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"GeoW", "[", 
+       RowBox[{"x_", ",", "y_", ",", "band_"}], "]"}], ":=", 
+      RowBox[{"N", "[", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"EuclideanDistance", "[", 
+           RowBox[{"x", ",", 
+            RowBox[{"y", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "]"}], "<", "band"}], 
+         ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "-", 
+            RowBox[{
+             RowBox[{"SquaredEuclideanDistance", "[", 
+              RowBox[{
+               RowBox[{"x", "[", 
+                RowBox[{"[", 
+                 RowBox[{"3", ";;", "4"}], "]"}], "]"}], ",", 
+               RowBox[{"y", "[", 
+                RowBox[{"[", 
+                 RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "]"}], "/", 
+             RowBox[{"(", 
+              RowBox[{"band", "^", "2"}], ")"}]}]}], ")"}], "^", "2"}], ",", 
+         "0"}], "]"}], "]"}]}], ";", 
+     RowBox[{
+     "this", " ", "is", " ", "a", " ", "alternative", " ", "choice", " ", 
+      RowBox[{"(", 
+       RowBox[{"Bi", "-", 
+        RowBox[{"square", " ", "weighting", " ", "function"}]}], ")"}]}]}], 
+    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"define", " ", "non"}], "-", 
+     RowBox[{"parametric", " ", "kernel", " ", "function"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Ker", "[", "x_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "/", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"2", "*", "Pi"}], "]"}]}], ")"}], "*", 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"(", 
+          RowBox[{"x", "^", "2"}], ")"}]}], "/", "2"}], "]"}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"define", " ", "one"}], "-", 
+     RowBox[{"dimensional", " ", "probability", " ", "function"}]}], "*)"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"op11", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{"CDF", "[", 
+      RowBox[{
+       RowBox[{"BinormalDistribution", "[", "0", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"prob", "[", 
+            RowBox[{
+             RowBox[{"x", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ";;", 
+                RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+             "beta"}], "]"}]}], "]"}], ",", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"prob", "[", 
+            RowBox[{
+             RowBox[{"x", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ";;", 
+                RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+             "beta"}], "]"}]}], "]"}]}], "}"}]}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"op10", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{"CDF", "[", 
+      RowBox[{
+       RowBox[{"BinormalDistribution", "[", "0", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"prob", "[", 
+            RowBox[{
+             RowBox[{"x", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ";;", 
+                RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+             "beta"}], "]"}]}], "]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", 
+             RowBox[{"0", ",", "1"}], "]"}], ",", 
+            RowBox[{"prob", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+              "beta"}], "]"}]}], "]"}]}]}], "}"}]}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"op00", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{"CDF", "[", 
+      RowBox[{
+       RowBox[{"BinormalDistribution", "[", "0", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", 
+             RowBox[{"0", ",", "1"}], "]"}], ",", 
+            RowBox[{"prob", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+              "beta"}], "]"}]}], "]"}]}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", 
+             RowBox[{"0", ",", "1"}], "]"}], ",", 
+            RowBox[{"prob", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+              "beta"}], "]"}]}], "]"}]}]}], "}"}]}], "]"}]}], ";"}], "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"define", " ", "multi"}], "-", 
+     RowBox[{"dimensional", " ", "probability", " ", "function"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"p11", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{"CDF", "[", 
+      RowBox[{
+       RowBox[{"BinormalDistribution", "[", 
+        RowBox[{"rou", "[", 
+         RowBox[{
+          RowBox[{"x", "[", 
+           RowBox[{"[", "5", "]"}], "]"}], ",", 
+          RowBox[{"y", "[", 
+           RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"prob", "[", 
+            RowBox[{
+             RowBox[{"x", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ";;", 
+                RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+             "beta"}], "]"}]}], "]"}], ",", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"prob", "[", 
+            RowBox[{
+             RowBox[{"y", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ";;", 
+                RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+             "beta"}], "]"}]}], "]"}]}], "}"}]}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"p10", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"CDF", "[", 
+       RowBox[{
+        RowBox[{"NormalDistribution", "[", 
+         RowBox[{"0", ",", "1"}], "]"}], ",", 
+        RowBox[{"Quantile", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", 
+          RowBox[{"prob", "[", 
+           RowBox[{
+            RowBox[{"x", "[", 
+             RowBox[{"[", 
+              RowBox[{"6", ";;", 
+               RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+            "beta"}], "]"}]}], "]"}]}], "]"}], "-", 
+      RowBox[{"p11", "[", 
+       RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"p01", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"CDF", "[", 
+       RowBox[{
+        RowBox[{"NormalDistribution", "[", 
+         RowBox[{"0", ",", "1"}], "]"}], ",", 
+        RowBox[{"Quantile", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", 
+          RowBox[{"prob", "[", 
+           RowBox[{
+            RowBox[{"y", "[", 
+             RowBox[{"[", 
+              RowBox[{"6", ";;", 
+               RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+            "beta"}], "]"}]}], "]"}]}], "]"}], "-", 
+      RowBox[{"p11", "[", 
+       RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"p00", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{"1", "-", 
+      RowBox[{"p11", "[", 
+       RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], "-", 
+      RowBox[{"p10", "[", 
+       RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], "-", 
+      RowBox[{"p01", "[", 
+       RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}]}], ";"}], "\n",
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"define", " ", "one"}], "-", 
+     RowBox[{"dimensional", " ", "probability", " ", 
+      RowBox[{"function", "'"}], "s", " ", "derivative"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"odp11", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"prob", "[", 
+            RowBox[{
+             RowBox[{"x", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ";;", 
+                RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+             "beta"}], "]"}]}], "]"}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"prob", "[", 
+            RowBox[{
+             RowBox[{"x", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ";;", 
+                RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+             "beta"}], "]"}]}], "]"}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}]}]}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"odp10", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", 
+             RowBox[{"0", ",", "1"}], "]"}], ",", 
+            RowBox[{"prob", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+              "beta"}], "]"}]}], "]"}]}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{"Quantile", "[", 
+          RowBox[{
+           RowBox[{"NormalDistribution", "[", 
+            RowBox[{"0", ",", "1"}], "]"}], ",", 
+           RowBox[{"prob", "[", 
+            RowBox[{
+             RowBox[{"x", "[", 
+              RowBox[{"[", 
+               RowBox[{"6", ";;", 
+                RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+             "beta"}], "]"}]}], "]"}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}]}]}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"odp00", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"CDF", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", 
+          RowBox[{"-", 
+           RowBox[{"Quantile", "[", 
+            RowBox[{
+             RowBox[{"NormalDistribution", "[", 
+              RowBox[{"0", ",", "1"}], "]"}], ",", 
+             RowBox[{"prob", "[", 
+              RowBox[{
+               RowBox[{"x", "[", 
+                RowBox[{"[", 
+                 RowBox[{"6", ";;", 
+                  RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+               "beta"}], "]"}]}], "]"}]}]}], "]"}]}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{"Quantile", "[", 
+           RowBox[{
+            RowBox[{"NormalDistribution", "[", 
+             RowBox[{"0", ",", "1"}], "]"}], ",", 
+            RowBox[{"prob", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+              "beta"}], "]"}]}], "]"}]}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}]}]}], ";"}], 
+   "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"define", " ", "multi"}], "-", 
+     RowBox[{"dimensional", " ", "probability", " ", 
+      RowBox[{"function", "'"}], "s", " ", "derivative"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"dp11", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Quantile", "[", 
+             RowBox[{
+              RowBox[{"NormalDistribution", "[", 
+               RowBox[{"0", ",", "1"}], "]"}], ",", 
+              RowBox[{"prob", "[", 
+               RowBox[{
+                RowBox[{"y", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"6", ";;", 
+                   RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                "beta"}], "]"}]}], "]"}], "-", 
+            RowBox[{
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}], "*", 
+             RowBox[{"rou", "[", 
+              RowBox[{
+               RowBox[{"x", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", 
+               RowBox[{"y", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}]}]}], ")"}], 
+          "/", 
+          RowBox[{"(", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"1", "-", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rou", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", 
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], ")"}], 
+              "^", "2"}]}], "]"}], ")"}]}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Quantile", "[", 
+             RowBox[{
+              RowBox[{"NormalDistribution", "[", 
+               RowBox[{"0", ",", "1"}], "]"}], ",", 
+              RowBox[{"prob", "[", 
+               RowBox[{
+                RowBox[{"x", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"6", ";;", 
+                   RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                "beta"}], "]"}]}], "]"}], "-", 
+            RowBox[{
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}], "*", 
+             RowBox[{"rou", "[", 
+              RowBox[{
+               RowBox[{"x", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", 
+               RowBox[{"y", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}]}]}], ")"}], 
+          "/", 
+          RowBox[{"(", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"1", "-", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rou", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", 
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], ")"}], 
+              "^", "2"}]}], "]"}], ")"}]}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"y", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"y", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"y", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}]}]}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"dp10", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}]}], "+", 
+            RowBox[{
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}], "*", 
+             RowBox[{"rou", "[", 
+              RowBox[{
+               RowBox[{"x", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", 
+               RowBox[{"y", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}]}]}], ")"}], 
+          "/", 
+          RowBox[{"(", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"1", "-", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rou", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", 
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], ")"}], 
+              "^", "2"}]}], "]"}], ")"}]}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Quantile", "[", 
+             RowBox[{
+              RowBox[{"NormalDistribution", "[", 
+               RowBox[{"0", ",", "1"}], "]"}], ",", 
+              RowBox[{"prob", "[", 
+               RowBox[{
+                RowBox[{"x", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"6", ";;", 
+                   RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                "beta"}], "]"}]}], "]"}], "-", 
+            RowBox[{
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}], "*", 
+             RowBox[{"rou", "[", 
+              RowBox[{
+               RowBox[{"x", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", 
+               RowBox[{"y", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}]}]}], ")"}], 
+          "/", 
+          RowBox[{"(", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"1", "-", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rou", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", 
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], ")"}], 
+              "^", "2"}]}], "]"}], ")"}]}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"y", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"y", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"y", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}]}]}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"dp01", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"CDF", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}], "-", 
+             RowBox[{
+              RowBox[{"Quantile", "[", 
+               RowBox[{
+                RowBox[{"NormalDistribution", "[", 
+                 RowBox[{"0", ",", "1"}], "]"}], ",", 
+                RowBox[{"prob", "[", 
+                 RowBox[{
+                  RowBox[{"x", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                  "beta"}], "]"}]}], "]"}], "*", 
+              RowBox[{"rou", "[", 
+               RowBox[{
+                RowBox[{"x", "[", 
+                 RowBox[{"[", "5", "]"}], "]"}], ",", 
+                RowBox[{"y", "[", 
+                 RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}]}]}], ")"}],
+            "/", 
+           RowBox[{"(", 
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"1", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"rou", "[", 
+                 RowBox[{
+                  RowBox[{"x", "[", 
+                   RowBox[{"[", "5", "]"}], "]"}], ",", 
+                  RowBox[{"y", "[", 
+                   RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], ")"}], 
+               "^", "2"}]}], "]"}], ")"}]}]}], "]"}]}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}]}], "+", 
+            RowBox[{
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}], "*", 
+             RowBox[{"rou", "[", 
+              RowBox[{
+               RowBox[{"x", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", 
+               RowBox[{"y", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}]}]}], ")"}], 
+          "/", 
+          RowBox[{"(", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"1", "-", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rou", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", 
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], ")"}], 
+              "^", "2"}]}], "]"}], ")"}]}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"y", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"y", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"y", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}]}]}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"dp00", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"CDF", "[", 
+         RowBox[{
+          RowBox[{"NormalDistribution", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"Quantile", "[", 
+               RowBox[{
+                RowBox[{"NormalDistribution", "[", 
+                 RowBox[{"0", ",", "1"}], "]"}], ",", 
+                RowBox[{"prob", "[", 
+                 RowBox[{
+                  RowBox[{"y", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                  "beta"}], "]"}]}], "]"}]}], "+", 
+             RowBox[{
+              RowBox[{"Quantile", "[", 
+               RowBox[{
+                RowBox[{"NormalDistribution", "[", 
+                 RowBox[{"0", ",", "1"}], "]"}], ",", 
+                RowBox[{"prob", "[", 
+                 RowBox[{
+                  RowBox[{"x", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                  "beta"}], "]"}]}], "]"}], "*", 
+              RowBox[{"rou", "[", 
+               RowBox[{
+                RowBox[{"x", "[", 
+                 RowBox[{"[", "5", "]"}], "]"}], ",", 
+                RowBox[{"y", "[", 
+                 RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}]}]}], ")"}],
+            "/", 
+           RowBox[{"(", 
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"1", "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"rou", "[", 
+                 RowBox[{
+                  RowBox[{"x", "[", 
+                   RowBox[{"[", "5", "]"}], "]"}], ",", 
+                  RowBox[{"y", "[", 
+                   RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], ")"}], 
+               "^", "2"}]}], "]"}], ")"}]}]}], "]"}]}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"x", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"x", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}], "-", 
+      RowBox[{
+       RowBox[{"CDF", "[", 
+        RowBox[{
+         RowBox[{"NormalDistribution", "[", 
+          RowBox[{"0", ",", "1"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}]}], "+", 
+            RowBox[{
+             RowBox[{"Quantile", "[", 
+              RowBox[{
+               RowBox[{"NormalDistribution", "[", 
+                RowBox[{"0", ",", "1"}], "]"}], ",", 
+               RowBox[{"prob", "[", 
+                RowBox[{
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"6", ";;", 
+                    RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ",", 
+                 "beta"}], "]"}]}], "]"}], "*", 
+             RowBox[{"rou", "[", 
+              RowBox[{
+               RowBox[{"x", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", 
+               RowBox[{"y", "[", 
+                RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}]}]}], ")"}], 
+          "/", 
+          RowBox[{"(", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{"1", "-", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"rou", "[", 
+                RowBox[{
+                 RowBox[{"x", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", 
+                 RowBox[{"y", "[", 
+                  RowBox[{"[", "5", "]"}], "]"}], ",", "d"}], "]"}], ")"}], 
+              "^", "2"}]}], "]"}], ")"}]}]}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"y", "[", 
+            RowBox[{"[", 
+             RowBox[{"6", ";;", 
+              RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+           "beta"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"Exp", "[", 
+             RowBox[{
+              RowBox[{"y", "[", 
+               RowBox[{"[", 
+                RowBox[{"6", ";;", 
+                 RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}], ".", 
+              "beta"}], "]"}]}], ")"}], "^", "2"}]}], ")"}], "*", 
+       RowBox[{"y", "[", 
+        RowBox[{"[", 
+         RowBox[{"6", ";;", 
+          RowBox[{"Length", "[", "x", "]"}]}], "]"}], "]"}]}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"I1", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", "2"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"1", "/", 
+         RowBox[{"op11", "[", 
+          RowBox[{"x", ",", "beta"}], "]"}]}], ")"}], "*", 
+       RowBox[{"odp11", "[", 
+        RowBox[{"x", ",", "beta"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"1", "/", 
+         RowBox[{"op10", "[", 
+          RowBox[{"x", ",", "beta"}], "]"}]}], ")"}], "*", 
+       RowBox[{"odp10", "[", 
+        RowBox[{"x", ",", "beta"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"x", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "-", 
+          RowBox[{"x", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ",", "2"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"1", "/", 
+         RowBox[{"op00", "[", 
+          RowBox[{"x", ",", "beta"}], "]"}]}], ")"}], "*", 
+       RowBox[{"odp00", "[", 
+        RowBox[{"x", ",", "beta"}], "]"}]}]}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"O1", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"y", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"1", "/", 
+         RowBox[{"p11", "[", 
+          RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], ")"}], "*", 
+       RowBox[{"dp11", "[", 
+        RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"y", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"1", "/", 
+         RowBox[{"p10", "[", 
+          RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], ")"}], "*", 
+       RowBox[{"dp10", "[", 
+        RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"y", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"1", "/", 
+         RowBox[{"p01", "[", 
+          RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], ")"}], "*", 
+       RowBox[{"dp01", "[", 
+        RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"y", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"1", "/", 
+         RowBox[{"p00", "[", 
+          RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], ")"}], "*", 
+       RowBox[{"dp00", "[", 
+        RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}]}]}], ";"}], 
+   "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Od2p", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"x", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "*", 
+      RowBox[{"y", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Outer", "[", 
+           RowBox[{"Times", ",", 
+            RowBox[{"dp11", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], ",", 
+            RowBox[{"dp11", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], "]"}], 
+          "*", 
+          RowBox[{"(", 
+           RowBox[{"1", "/", 
+            RowBox[{"p11", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], ")"}]}],
+          ")"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Outer", "[", 
+           RowBox[{"Times", ",", 
+            RowBox[{"dp10", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], ",", 
+            RowBox[{"dp10", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], "]"}], 
+          "*", 
+          RowBox[{"(", 
+           RowBox[{"1", "/", 
+            RowBox[{"p10", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], ")"}]}],
+          ")"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Outer", "[", 
+           RowBox[{"Times", ",", 
+            RowBox[{"dp01", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], ",", 
+            RowBox[{"dp01", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], "]"}], 
+          "*", 
+          RowBox[{"(", 
+           RowBox[{"1", "/", 
+            RowBox[{"p01", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], ")"}]}],
+          ")"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Outer", "[", 
+           RowBox[{"Times", ",", 
+            RowBox[{"dp00", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], ",", 
+            RowBox[{"dp00", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], "]"}], 
+          "*", 
+          RowBox[{"(", 
+           RowBox[{"1", "/", 
+            RowBox[{"p00", "[", 
+             RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}]}], ")"}]}],
+          ")"}]}], ")"}]}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Id2p", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], ",", "2"}], "]"}]}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Outer", "[", 
+          RowBox[{"Times", ",", 
+           RowBox[{"odp11", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}], ",", 
+           RowBox[{"odp11", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}]}], "]"}], "*", 
+         RowBox[{"(", 
+          RowBox[{"1", "/", 
+           RowBox[{"op11", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}]}], ")"}]}], "+", 
+        RowBox[{"2", "*", 
+         RowBox[{"Outer", "[", 
+          RowBox[{"Times", ",", 
+           RowBox[{"odp10", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}], ",", 
+           RowBox[{"odp10", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}]}], "]"}], "*", 
+         RowBox[{"(", 
+          RowBox[{"1", "/", 
+           RowBox[{"op10", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}]}], ")"}]}], "+", 
+        RowBox[{
+         RowBox[{"Outer", "[", 
+          RowBox[{"Times", ",", 
+           RowBox[{"odp00", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}], ",", 
+           RowBox[{"odp00", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}]}], "]"}], "*", 
+         RowBox[{"(", 
+          RowBox[{"1", "/", 
+           RowBox[{"op00", "[", 
+            RowBox[{"x", ",", "beta"}], "]"}]}], ")"}]}]}], ")"}]}]}], ";"}], 
+   "\n", "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"GTDE1", "[", 
+      RowBox[{"beta_", ",", "d_", ",", "DATA_"}], "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"DR", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"DR", "+=", 
+          RowBox[{"I1", "[", 
+           RowBox[{
+            RowBox[{"DATA", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "beta"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "DATA", "]"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"DR", "+=", 
+          RowBox[{"O1", "[", 
+           RowBox[{
+            RowBox[{"DATA", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"DATA", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", "beta", ",", "d"}], "]"}]}],
+          ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{
+            RowBox[{"Length", "[", "DATA", "]"}], "-", "1"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", 
+           RowBox[{"i", "+", "1"}], ",", 
+           RowBox[{"Length", "[", "DATA", "]"}]}], "}"}]}], "]"}], ";", 
+       "DR"}], ")"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"DE1", "[", 
+      RowBox[{
+      "a_", ",", "b_", ",", "band_", ",", "beta_", ",", "d_", ",", "DATA_"}], 
+      "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"D1R", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"D1Set", "=", 
+        RowBox[{"Split", "[", 
+         RowBox[{"DATA", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#1", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}], "\[Equal]", 
+            RowBox[{"#2", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"D1R", "+=", 
+          RowBox[{
+           RowBox[{"GeoW", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"a", ",", "b"}], "}"}], ",", 
+             RowBox[{
+              RowBox[{"D1Set", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", "band"}], "]"}], "*", 
+           RowBox[{"(", 
+            RowBox[{"1", "/", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Total", "[", 
+                RowBox[{
+                 RowBox[{"D1Set", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], "-", "1"}], 
+              ")"}]}], ")"}], "*", 
+           RowBox[{"GTDE1", "[", 
+            RowBox[{"beta", ",", "d", ",", 
+             RowBox[{"D1Set", "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "D1Set", "]"}]}], "}"}]}], "]"}], ";", 
+       "D1R"}], ")"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"GTDE2", "[", 
+      RowBox[{"beta_", ",", "d_", ",", "DATA_"}], "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"FSI", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"FSI", "+=", 
+          RowBox[{"Id2p", "[", 
+           RowBox[{
+            RowBox[{"DATA", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "beta"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "DATA", "]"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"FSI", "+=", 
+          RowBox[{"Od2p", "[", 
+           RowBox[{
+            RowBox[{"DATA", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"DATA", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", "beta", ",", "d"}], "]"}]}],
+          ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{
+            RowBox[{"Length", "[", "DATA", "]"}], "-", "1"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", 
+           RowBox[{"i", "+", "1"}], ",", 
+           RowBox[{"Length", "[", "DATA", "]"}]}], "}"}]}], "]"}], ";", 
+       "FSI"}], ")"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"DE2", "[", 
+      RowBox[{
+      "a_", ",", "b_", ",", "band_", ",", "beta_", ",", "d_", ",", "DATA_"}], 
+      "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"D2R", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"D1Set", "=", 
+        RowBox[{"Split", "[", 
+         RowBox[{"DATA", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#1", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}], "\[Equal]", 
+            RowBox[{"#2", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"D2R", "+=", 
+          RowBox[{
+           RowBox[{"GeoW", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"a", ",", "b"}], "}"}], ",", 
+             RowBox[{
+              RowBox[{"D1Set", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", "band"}], "]"}], "*", 
+           RowBox[{"(", 
+            RowBox[{"1", "/", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Total", "[", 
+                RowBox[{
+                 RowBox[{"D1Set", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], "-", "1"}], 
+              ")"}]}], ")"}], "*", 
+           RowBox[{"GTDE2", "[", 
+            RowBox[{"beta", ",", "d", ",", 
+             RowBox[{"D1Set", "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "D1Set", "]"}]}], "}"}]}], "]"}], ";", 
+       "D2R"}], ")"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"log", "-", "likelihood"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"InLik", "[", 
+      RowBox[{"x_", ",", "beta_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", "2"}], "]"}], "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{"op11", "[", 
+         RowBox[{"x", ",", "beta"}], "]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{"op10", "[", 
+         RowBox[{"x", ",", "beta"}], "]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"Binomial", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"x", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "-", 
+          RowBox[{"x", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ",", "2"}], "]"}], "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{"op00", "[", 
+         RowBox[{"x", ",", "beta"}], "]"}], "]"}]}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"OutLik", "[", 
+      RowBox[{"x_", ",", "y_", ",", "beta_", ",", "d_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"y", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{"p11", "[", 
+         RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"y", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{"p10", "[", 
+         RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"y", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{"p01", "[", 
+         RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"x", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"x", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"y", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], ")"}], "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{"p00", "[", 
+         RowBox[{"x", ",", "y", ",", "beta", ",", "d"}], "]"}], "]"}]}]}]}], 
+    ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"GTLik", "[", 
+      RowBox[{"beta_", ",", "d_", ",", "DATA_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Total", "[", 
+           RowBox[{"DATA", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], "-", "1"}], 
+         ")"}]}], ")"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"L", "=", "0"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"L", "+=", 
+           RowBox[{"InLik", "[", 
+            RowBox[{
+             RowBox[{"DATA", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "beta"}], "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "DATA", "]"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"L", "+=", 
+           RowBox[{"OutLik", "[", 
+            RowBox[{
+             RowBox[{"DATA", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", 
+             RowBox[{"DATA", "[", 
+              RowBox[{"[", "j", "]"}], "]"}], ",", "beta", ",", "d"}], 
+            "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{
+             RowBox[{"Length", "[", "DATA", "]"}], "-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", 
+            RowBox[{"i", "+", "1"}], ",", 
+            RowBox[{"Length", "[", "DATA", "]"}]}], "}"}]}], "]"}], ";", 
+        "L"}], ")"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Lik", "[", 
+      RowBox[{
+      "a_", ",", "b_", ",", "band_", ",", "beta_", ",", "d_", ",", "DATA_"}], 
+      "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Lik1", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"D1Set", "=", 
+        RowBox[{"Split", "[", 
+         RowBox[{"DATA", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#1", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}], "\[Equal]", 
+            RowBox[{"#2", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"Lik1", "+=", 
+          RowBox[{
+           RowBox[{"GeoW", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"a", ",", "b"}], "}"}], ",", 
+             RowBox[{
+              RowBox[{"D1Set", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", "band"}], "]"}], "*", 
+           RowBox[{"GTLik", "[", 
+            RowBox[{"beta", ",", "d", ",", 
+             RowBox[{"D1Set", "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "D1Set", "]"}]}], "}"}]}], "]"}], ";", 
+       "Lik1"}], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"End", " ", "of", " ", "basic", " ", "codes"}], "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "The", " ", "following", " ", "codes", " ", "give", " ", "several", " ", 
+     "function", " ", "for", " ", "GWTCLR"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "FinCom", " ", "is", " ", "used", " ", "to", " ", "give", " ", "the", 
+       " ", "raw", " ", "GWTCLR", " ", "estimates", " ", "of", " ", "beta", 
+       " ", "and", " ", "the", " ", "corresponding", " ", "log"}], "-", 
+      RowBox[{
+      "likelihood", " ", "in", " ", "each", " ", "step", " ", "of", " ", 
+       "the", " ", 
+       RowBox[{"iteration", ".", "a"}], " ", "is", " ", "the", " ", "initial",
+        " ", "value", " ", "of", " ", "the", " ", "iteration"}]}], "\:ff0c", 
+     RowBox[{
+     "d", " ", "is", " ", "the", " ", "temporal", " ", "correlation", " ", 
+      "parameter"}], "\:ff0c", "u", ",", 
+     RowBox[{
+     "v", " ", "are", " ", "the", " ", "geographical", " ", "coordinates"}], 
+     "\:ff0c", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", 
+      "geograhical", " ", "weight", " ", "function"}], ",", 
+     RowBox[{
+     "DATA", " ", "is", " ", "the", " ", "data", " ", "which", " ", 
+      "used"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"We", " ", "set", " ", "a", " ", "default", " ", "10", " ", 
+          RowBox[{"iteration", ".", "You"}], " ", "can", " ", "set", " ", 
+          "your", " ", "own", " ", "iteration", " ", "times", " ", "by", " ", 
+          "changing", " ", 
+          RowBox[{"Print", "[", 
+           RowBox[{"N", "[", 
+            RowBox[{"Lik", "[", 
+             RowBox[{
+             "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", "DATA"}],
+              "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "10"}], "}"}]}], "]"}], " ", "to", " ", 
+       RowBox[{"Print", "[", 
+        RowBox[{"N", "[", 
+         RowBox[{"Lik", "[", 
+          RowBox[{
+          "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", "DATA"}], 
+          "]"}], "]"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"any", " ", "value"}]}], "}"}]}], "]"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FinCom", "[", 
+     RowBox[{
+     "a_", ",", "d_", ",", "u_", ",", "v_", ",", "band_", ",", "DATA_"}], 
+     "]"}], ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"beta", "=", "a"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"beta", "=", 
+          RowBox[{"N", "[", 
+           RowBox[{"beta", "-", 
+            RowBox[{
+             RowBox[{"Inverse", "[", 
+              RowBox[{"N", "[", 
+               RowBox[{"DE2", "[", 
+                RowBox[{
+                "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", 
+                 "DATA"}], "]"}], "]"}], "]"}], ".", 
+             RowBox[{"N", "[", 
+              RowBox[{"DE1", "[", 
+               RowBox[{
+               "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", 
+                "DATA"}], "]"}], "]"}]}]}], "]"}]}], ";", 
+         RowBox[{"Print", "[", "beta", "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"N", "[", 
+           RowBox[{"Lik", "[", 
+            RowBox[{
+            "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", "DATA"}], 
+            "]"}], "]"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "10"}], "}"}]}], "]"}]}], ")"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "BetaFinCom", " ", "is", " ", "used", " ", "to", " ", "give", " ", "the",
+       " ", "raw", " ", "GWTCLR", " ", "estimates", " ", "after", " ", "10", 
+      " ", "iterations"}], ",", 
+     RowBox[{
+     "you", " ", "can", " ", "change", " ", "the", " ", "iteration", " ", 
+      "time", " ", "by", " ", "changing", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "10"}], "}"}], " ", "to", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"any", " ", "value"}]}], "}"}]}], ",", 
+     RowBox[{
+     "all", " ", "other", " ", "defination", " ", "are", " ", "concur", " ", 
+      "with", " ", "the", " ", "FinCom"}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"BetaFinCom", "[", 
+     RowBox[{
+     "a_", ",", "d_", ",", "u_", ",", "v_", ",", "band_", ",", "DATA_"}], 
+     "]"}], ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"beta", "=", "a"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{"beta", "=", 
+         RowBox[{"N", "[", 
+          RowBox[{"beta", "-", 
+           RowBox[{
+            RowBox[{"Inverse", "[", 
+             RowBox[{"N", "[", 
+              RowBox[{"DE2", "[", 
+               RowBox[{
+               "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", 
+                "DATA"}], "]"}], "]"}], "]"}], ".", 
+            RowBox[{"N", "[", 
+             RowBox[{"DE1", "[", 
+              RowBox[{
+              "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", 
+               "DATA"}], "]"}], "]"}]}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "10"}], "}"}]}], "]"}], ";", "beta"}], ")"}]}], 
+   "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "LikFinCom", " ", "is", " ", "used", " ", "to", " ", "obtain", " ", 
+      "the", " ", "log"}], "-", 
+     RowBox[{"likelihood", " ", "value", " ", "after", " ", "10", " ", 
+      RowBox[{"iterations", ".", "You"}], " ", "can", " ", "set", " ", "your",
+       " ", "own", " ", "iteration", " ", "times", " ", "by", " ", "changing",
+       " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "10"}], "}"}], " ", "to", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"any", " ", "value"}]}], "}"}]}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "d", " ", "is", " ", "temporal", " ", "correlation", " ", "parameter"}], 
+     ",", 
+     RowBox[{
+     "u", " ", "and", " ", "v", " ", "is", " ", "geographical", " ", 
+      "coordinates"}], ",", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "geographical", " ", "bandwidth", 
+      " ", "of", " ", "geographical", " ", "weight", " ", "function"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"LikFinCom", "[", 
+     RowBox[{"d_", ",", "u_", ",", "v_", ",", "band_", ",", "DATA_"}], "]"}], 
+    ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"beta", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", 
+           RowBox[{
+            RowBox[{"Length", "[", 
+             RowBox[{"DATA", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "5"}]}], "}"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{"beta", "=", 
+         RowBox[{"N", "[", 
+          RowBox[{"beta", "-", 
+           RowBox[{
+            RowBox[{"Inverse", "[", 
+             RowBox[{"N", "[", 
+              RowBox[{"DE2", "[", 
+               RowBox[{
+               "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", 
+                "DATA"}], "]"}], "]"}], "]"}], ".", 
+            RowBox[{"N", "[", 
+             RowBox[{"DE1", "[", 
+              RowBox[{
+              "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", 
+               "DATA"}], "]"}], "]"}]}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "10"}], "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"N", "[", 
+       RowBox[{"Lik", "[", 
+        RowBox[{
+        "u", ",", "v", ",", "band", ",", "beta", ",", "d", ",", "DATA"}], 
+        "]"}], "]"}]}], ")"}]}], "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "PlotLik", " ", "is", " ", "used", " ", "to", " ", "obtain", " ", "the", 
+      " ", "profile", " ", "of", " ", "temporal", " ", "correlation", " ", 
+      "parameter", " ", "vs", " ", "Log"}], "-", 
+     RowBox[{"Likelihood", " ", 
+      RowBox[{"value", ".", "This"}], " ", "can", " ", "help", " ", "to", " ",
+       "choose", " ", "the", " ", "best", " ", "temporal", " ", "correlation",
+       " ", "parameter", " ", "by", " ", "choosing", " ", "the", " ", "one", 
+      " ", "with", " ", "maximum", " ", "log"}], "-", 
+     RowBox[{"likelihood", " ", "value"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "a", " ", "is", " ", "the", " ", "lower", " ", "boundry", " ", "of", " ",
+       "searching", " ", "region"}], "\:ff0c", 
+     RowBox[{
+     "b", " ", "is", " ", "the", " ", "upper", " ", "boundry", " ", "of", " ",
+       "searching", " ", "region"}], "\:ff0c", 
+     RowBox[{"n", " ", "is", " ", "the", " ", "searching", " ", "stepsize"}], 
+     ",", 
+     RowBox[{
+     "u", " ", "and", " ", "v", " ", "is", " ", "the", " ", "geographical", 
+      " ", "coordinates"}], ",", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", "the", 
+      " ", "geographical", " ", "weight", " ", "funtion"}], ",", 
+     RowBox[{
+     "DATA", " ", "is", " ", "the", " ", "data", " ", "used", " ", "for", " ",
+       "analysis"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PlotLik", "[", 
+     RowBox[{
+     "a_", ",", "b_", ",", "n_", ",", "u_", ",", "v_", ",", "band_", ",", 
+      "DATA_"}], "]"}], ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"A", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "a", ",", "b", ",", "n"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"A", "[", 
+          RowBox[{"[", 
+           RowBox[{"Round", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"i", "-", "a"}], ")"}], "/", "n"}], ")"}], "+", "1"}],
+             "]"}], "]"}], "]"}], "=", 
+         RowBox[{"LikFinCom", "[", 
+          RowBox[{"i", ",", "u", ",", "v", ",", "band", ",", "DATA"}], 
+          "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "a", ",", "b", ",", "n"}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", 
+         RowBox[{"Join", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Table", "[", 
+             RowBox[{"i", ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "a", ",", "b", ",", "n"}], "}"}]}], "]"}], 
+            "}"}], ",", 
+           RowBox[{"{", "A", "}"}]}], "]"}], "]"}], ",", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Temporal", " ", "Correlation", " ", "Parameter"}], ",", 
+           RowBox[{"Log", "-", "Likelihood"}]}], "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], ")"}]}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "ResAP", " ", "can", " ", "automatically", " ", "give", " ", "you", " ", 
+      "the", " ", "best", " ", "temporal", " ", "correlation", " ", 
+      "parameter", " ", "which", " ", "gives", " ", "the", " ", "maximum", 
+      " ", "log"}], "-", "likelihood"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "a", " ", "is", " ", "the", " ", "lower", " ", "boundry", " ", "of", " ",
+       "searching", " ", "region"}], "\:ff0c", 
+     RowBox[{
+     "b", " ", "is", " ", "the", " ", "upper", " ", "boundry", " ", "of", " ",
+       "searching", " ", "region"}], "\:ff0c", 
+     RowBox[{"n", " ", "is", " ", "the", " ", "searching", " ", "stepsize"}], 
+     ",", 
+     RowBox[{
+     "u", " ", "and", " ", "v", " ", "is", " ", "the", " ", "geographical", 
+      " ", "coordinates"}], ",", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", "the", 
+      " ", "geographical", " ", "weight", " ", "funtion"}], ",", 
+     RowBox[{
+     "DATA", " ", "is", " ", "the", " ", "data", " ", "used", " ", "for", " ",
+       "analysis"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ResAP", "[", 
+      RowBox[{
+      "a_", ",", "b_", ",", "n_", ",", "u_", ",", "v_", ",", "band_", ",", 
+       "DATA_"}], "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"ArP", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "a", ",", "b", ",", "n"}], "}"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"Pamd", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "a", ",", "b", ",", "n"}], "}"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ArP", "[", 
+           RowBox[{"[", 
+            RowBox[{"Round", "[", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"i", "-", "a"}], ")"}], "/", "n"}], ")"}], "+", 
+              "1"}], "]"}], "]"}], "]"}], "=", 
+          RowBox[{"LikFinCom", "[", 
+           RowBox[{"i", ",", "u", ",", "v", ",", "band", ",", "DATA"}], 
+           "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "a", ",", "b", ",", "n"}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ArP", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "\[Equal]", 
+            RowBox[{"Max", "[", "ArP", "]"}]}], ",", 
+           RowBox[{
+            RowBox[{"Pamd", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "=", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"j", "-", "1"}], ")"}], "*", "n"}], "+", "a"}]}], ",", 
+           RowBox[{
+            RowBox[{"Pamd", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "=", "0"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", 
+           RowBox[{"Length", "[", "ArP", "]"}]}], "}"}]}], "]"}], ";", 
+       RowBox[{"Total", "[", "Pamd", "]"}]}], ")"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "DEV", " ", "is", " ", "a", " ", "inner", " ", "function", " ", "of", 
+      " ", "RawVar"}], ",", 
+     RowBox[{
+      RowBox[{"RawVar", " ", "gives", " ", "the", " ", "variance"}], "-", 
+      RowBox[{
+      "covariance", " ", "of", " ", "the", " ", "raw", " ", "estimates", " ", 
+       "of", " ", "GWTCLR"}]}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"u", ",", 
+     RowBox[{"v", " ", "are", " ", "geographical", " ", "coordinates"}], 
+     "\:ff0c", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", 
+      "geographical", " ", "weight", " ", "function"}], "\:ff0c", 
+     RowBox[{
+     "d", " ", "is", " ", "the", " ", "temporal", " ", "correlation", " ", 
+      "parameter"}], "\:ff0c", 
+     RowBox[{
+     "DATA", " ", "is", " ", "the", " ", "data", " ", "for", " ", 
+      "analysis"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"DEV", "[", 
+      RowBox[{
+      "u_", ",", "v_", ",", "band_", ",", "beta_", ",", "d_", ",", "DATA_"}], 
+      "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"D1V", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"D1Set", "=", 
+        RowBox[{"Split", "[", 
+         RowBox[{"DATA", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#1", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}], "\[Equal]", 
+            RowBox[{"#2", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"D1V", "+=", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"GeoW", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"u", ",", "v"}], "}"}], ",", 
+               RowBox[{
+                RowBox[{"D1Set", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", 
+                RowBox[{"[", "1", "]"}], "]"}], ",", "band"}], "]"}], "^", 
+             "2"}], ")"}], "*", 
+           RowBox[{"Outer", "[", 
+            RowBox[{"Times", ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"Total", "[", 
+                   RowBox[{
+                    RowBox[{"D1Set", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], "-", 
+                  "1"}], ")"}]}], ")"}], "*", 
+              RowBox[{"GTDE1", "[", 
+               RowBox[{"beta", ",", "d", ",", 
+                RowBox[{"D1Set", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"Total", "[", 
+                   RowBox[{
+                    RowBox[{"D1Set", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], "-", 
+                  "1"}], ")"}]}], ")"}], "*", 
+              RowBox[{"GTDE1", "[", 
+               RowBox[{"beta", ",", "d", ",", 
+                RowBox[{"D1Set", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}]}], "]"}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "D1Set", "]"}]}], "}"}]}], "]"}], ";", 
+       "D1V"}], ")"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RawVar", "[", 
+      RowBox[{"u_", ",", "v_", ",", "band_", ",", "d_", ",", "DATA_"}], "]"}],
+      ":=", 
+     RowBox[{
+      RowBox[{"Inverse", "[", 
+       RowBox[{"N", "[", 
+        RowBox[{"DE2", "[", 
+         RowBox[{"u", ",", "v", ",", "band", ",", 
+          RowBox[{"BetaFinCom", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{"0", ",", 
+              RowBox[{"{", 
+               RowBox[{"n", ",", 
+                RowBox[{
+                 RowBox[{"Length", "[", 
+                  RowBox[{"DATA", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "5"}]}], 
+               "}"}]}], "]"}], ",", "d", ",", "u", ",", "v", ",", "band", ",",
+             "DATA"}], "]"}], ",", "d", ",", "DATA"}], "]"}], "]"}], "]"}], 
+      ".", 
+      RowBox[{"DEV", "[", 
+       RowBox[{"u", ",", "v", ",", "band", ",", 
+        RowBox[{"BetaFinCom", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{"0", ",", 
+            RowBox[{"{", 
+             RowBox[{"n", ",", 
+              RowBox[{
+               RowBox[{"Length", "[", 
+                RowBox[{"DATA", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "5"}]}], "}"}]}],
+            "]"}], ",", "d", ",", "u", ",", "v", ",", "band", ",", "DATA"}], 
+         "]"}], ",", "d", ",", "DATA"}], "]"}], ".", 
+      RowBox[{"Inverse", "[", 
+       RowBox[{"N", "[", 
+        RowBox[{"DE2", "[", 
+         RowBox[{"u", ",", "v", ",", "band", ",", 
+          RowBox[{"BetaFinCom", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{"0", ",", 
+              RowBox[{"{", 
+               RowBox[{"n", ",", 
+                RowBox[{
+                 RowBox[{"Length", "[", 
+                  RowBox[{"DATA", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "5"}]}], 
+               "}"}]}], "]"}], ",", "d", ",", "u", ",", "v", ",", "band", ",",
+             "DATA"}], "]"}], ",", "d", ",", "DATA"}], "]"}], "]"}], 
+       "]"}]}]}], ";"}], "\[IndentingNewLine]", "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "RawTe", " ", "gives", " ", "the", " ", "result", " ", "of", " ", "Null", 
+     " ", "hypothesis", " ", 
+     RowBox[{"test", ".", "It"}], " ", "shows", " ", "whether", " ", "the", 
+     " ", "wstimate", " ", "is", " ", "significantly", " ", "different", " ", 
+     "with", " ", "0"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"u", ",", 
+     RowBox[{"v", " ", "are", " ", "geographical", " ", "coordinates"}], 
+     "\:ff0c", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", 
+      "geographical", " ", "weight", " ", "function"}], "\:ff0c", 
+     RowBox[{
+     "d", " ", "is", " ", "the", " ", "temporal", " ", "correlation", " ", 
+      "parameter"}], "\:ff0c", 
+     RowBox[{
+     "DATA", " ", "is", " ", "the", " ", "data", " ", "for", " ", 
+      "analysis"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RawTe", "[", 
+      RowBox[{"u_", ",", "v_", ",", "band_", ",", "d_", ",", "DATA_"}], "]"}],
+      ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"B", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", 
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"DATA", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "5"}]}], "}"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"beta", "=", 
+        RowBox[{"BetaFinCom", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{"0", ",", 
+            RowBox[{"{", 
+             RowBox[{"n", ",", 
+              RowBox[{
+               RowBox[{"Length", "[", 
+                RowBox[{"DATA", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "5"}]}], "}"}]}],
+            "]"}], ",", "d", ",", "u", ",", "v", ",", "band", ",", "DATA"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"betaVar", "=", 
+        RowBox[{"RawVar", "[", 
+         RowBox[{"u", ",", "v", ",", "band", ",", "d", ",", "DATA"}], "]"}]}],
+        ";", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"B", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "=", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"N", "[", 
+             RowBox[{"beta", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "]"}], "-", 
+            RowBox[{"1.96", "*", 
+             RowBox[{"N", "[", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"betaVar", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}]}]}], "<", "0", 
+           "<", 
+           RowBox[{
+            RowBox[{"N", "[", 
+             RowBox[{"beta", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "]"}], "+", 
+            RowBox[{"1.96", "*", 
+             RowBox[{"N", "[", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"betaVar", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}]}]}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{
+            RowBox[{"Length", "[", 
+             RowBox[{"DATA", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "5"}]}], "}"}]}], 
+        "]"}], ";", "B"}], ")"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "PaDEV", " ", "is", " ", "a", " ", "inner", " ", "function", " ", "of", 
+      " ", "PaRawCv"}], ",", 
+     RowBox[{
+      RowBox[{"PaRawCv", " ", "gives", " ", "the", " ", "variance"}], "-", 
+      RowBox[{
+      "covariance", " ", "of", " ", "a", " ", "pair", " ", "of", " ", "two", 
+       " ", "raw", " ", "eatimate", " ", "of", " ", "GWTCLR"}]}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "u", " ", "and", " ", "v", " ", "are", " ", "the", " ", "geographical", 
+      " ", "coordinates"}], "\:ff0c", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", 
+      "geographical", " ", "weight", " ", "function"}], "\:ff0c", 
+     RowBox[{
+     "d", " ", "is", " ", "the", " ", "temporal", " ", "correlation", " ", 
+      "parameter"}], "\:ff0c", 
+     RowBox[{
+     "betaa", " ", "is", " ", "the", " ", "raw", " ", "estimates", " ", "of", 
+      " ", "data", " ", "a"}], "\:ff0c", 
+     RowBox[{
+     "betab", " ", "is", " ", "the", " ", "raw", " ", "estimates", " ", "of", 
+      " ", "data", " ", "b"}], "\:ff0c", 
+     RowBox[{
+     "DATAa", " ", "is", " ", "data", " ", "a", " ", "for", " ", "analysis"}],
+      ",", 
+     RowBox[{
+     "DATAb", " ", "is", " ", "data", " ", "b", " ", "for", " ", 
+      "analysis"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"PaDEV", "[", 
+      RowBox[{
+      "u_", ",", "v_", ",", "band_", ",", "betaa_", ",", "betab_", ",", "d_", 
+       ",", "DATAa_", ",", "DATAb_"}], "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"PaD1V", "=", "0"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"D1Set", "=", 
+        RowBox[{"Split", "[", 
+         RowBox[{"DATAa", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#1", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}], "\[Equal]", 
+            RowBox[{"#2", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"D2Set", "=", 
+        RowBox[{"Split", "[", 
+         RowBox[{"DATAb", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#1", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}], "\[Equal]", 
+            RowBox[{"#2", "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], "&"}]}], "]"}]}], ";",
+        "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"D1Set", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}], "\[Equal]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"D2Set", "[", 
+               RowBox[{"[", "j", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{"3", ";;", "4"}], "]"}], "]"}]}], ",", 
+           RowBox[{"PaD1V", "+=", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"GeoW", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"u", ",", "v"}], "}"}], ",", 
+                 RowBox[{
+                  RowBox[{"D1Set", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", "band"}], "]"}], "^", 
+               "2"}], ")"}], "*", 
+             RowBox[{"Outer", "[", 
+              RowBox[{"Times", ",", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"1", "/", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"Total", "[", 
+                    RowBox[{
+                    RowBox[{"D1Set", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], "-", 
+                    "1"}], ")"}]}], ")"}], "*", 
+                RowBox[{"GTDE1", "[", 
+                 RowBox[{"betaa", ",", "d", ",", 
+                  RowBox[{"D1Set", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ",", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"1", "/", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"Total", "[", 
+                    RowBox[{
+                    RowBox[{"D2Set", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], "-", 
+                    "1"}], ")"}]}], ")"}], "*", 
+                RowBox[{"GTDE1", "[", 
+                 RowBox[{"betab", ",", "d", ",", 
+                  RowBox[{"D2Set", "[", 
+                   RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}]}], "]"}]}]}], 
+           ",", 
+           RowBox[{"PaD1V", "+=", "0"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "D1Set", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", 
+           RowBox[{"Length", "[", "D2Set", "]"}]}], "}"}]}], "]"}], ";", 
+       "PaD1V"}], ")"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"PaRawCv", "[", 
+      RowBox[{
+      "u_", ",", "v_", ",", "band_", ",", "betaa_", ",", "betab_", ",", "d_", 
+       ",", "DATAa_", ",", "DATAb_"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"Inverse", "[", 
+       RowBox[{"N", "[", 
+        RowBox[{"DE2", "[", 
+         RowBox[{
+         "u", ",", "v", ",", "band", ",", "betaa", ",", "d", ",", "DATAa"}], 
+         "]"}], "]"}], "]"}], ".", 
+      RowBox[{"PaDEV", "[", 
+       RowBox[{
+       "u", ",", "v", ",", "band", ",", "betaa", ",", "betab", ",", "d", ",", 
+        "DATAa", ",", "DATAb"}], "]"}], ".", 
+      RowBox[{"Inverse", "[", 
+       RowBox[{"N", "[", 
+        RowBox[{"DE2", "[", 
+         RowBox[{
+         "u", ",", "v", ",", "band", ",", "betab", ",", "d", ",", "DATAb"}], 
+         "]"}], "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "The", " ", "following", " ", "is", " ", "for", " ", "the", " ", "final", 
+     " ", "refined", " ", "ALR"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "RawEs", " ", "gives", " ", "you", " ", "a", " ", "set", " ", "of", " ", 
+     "raw", " ", "GWTCLR", " ", "estimates", " ", "for", " ", "a", " ", "set",
+      " ", "of", " ", "times", " ", "which", " ", "you", " ", "are", " ", 
+     "interested"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "Tim", " ", "is", " ", "a", " ", "vector", " ", "with", " ", "elements", 
+      " ", "being", " ", "the", " ", "time", " ", "point", " ", "at", " ", 
+      "which", " ", "raw", " ", "estimates", " ", "of", " ", "GWTCLR", " ", 
+      "is", " ", "calculated"}], "\:ff0c", 
+     RowBox[{
+      RowBox[{
+      "tao", " ", "is", " ", "the", " ", "range", " ", "of", " ", "the", " ", 
+       "\[Tau]"}], "-", 
+      RowBox[{"nearest", " ", "set"}]}], "\:ff0c", 
+     RowBox[{
+     "d", " ", "is", " ", "the", " ", "temporal", " ", "correlation", " ", 
+      "parameter"}], "\:ff0c", 
+     RowBox[{
+     "u", " ", "and", " ", "v", " ", "are", " ", "geographical", " ", 
+      "coordinates"}], "\:ff0c", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", 
+      "geographical", " ", "weight", " ", "function"}], "\:ff0c", 
+     RowBox[{
+     "DATA", " ", "is", " ", "the", " ", "data", " ", "for", " ", 
+      "analysis"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RawEs", "[", 
+      RowBox[{
+      "Tim_", ",", "tao_", ",", "d_", ",", "u_", ",", "v_", ",", "band_", ",",
+        "DATA_"}], "]"}], ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"betaa", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", 
+            RowBox[{
+             RowBox[{"Length", "[", 
+              RowBox[{"DATA", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "5"}]}], "}"}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"betaH", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"betaa", ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", 
+            RowBox[{"Length", "[", "Tim", "]"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"ste", "=", "1"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"betaH", "[", 
+            RowBox[{"[", "ste", "]"}], "]"}], "=", 
+           RowBox[{"BetaFinCom", "[", 
+            RowBox[{"betaa", ",", "d", ",", "u", ",", "v", ",", "band", ",", 
+             RowBox[{"TNear", "[", 
+              RowBox[{"t", ",", "tao", ",", "DATA"}], "]"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"ste", "+=", "1"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "Tim"}], "}"}]}], "]"}], ";", "betaH"}], ")"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"RawCv", " ", "gives", " ", "the", " ", "variance"}], "-", 
+     RowBox[{
+     "covariance", " ", "of", " ", "the", " ", "raw", " ", "estimates", " ", 
+      "set", " ", "which", " ", "obtained", " ", "from", " ", "RawEs"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "Tim", " ", "is", " ", "a", " ", "vector", " ", "with", " ", "elements", 
+      " ", "being", " ", "the", " ", "time", " ", "point", " ", "at", " ", 
+      "which", " ", "raw", " ", "estimates", " ", "of", " ", "GWTCLR", " ", 
+      "is", " ", "calculated"}], "\:ff0c", 
+     RowBox[{
+      RowBox[{
+      "tao", " ", "is", " ", "the", " ", "range", " ", "of", " ", "the", " ", 
+       "\[Tau]"}], "-", 
+      RowBox[{"nearest", " ", "set"}]}], "\:ff0c", 
+     RowBox[{
+     "d", " ", "is", " ", "the", " ", "temporal", " ", "correlation", " ", 
+      "parameter"}], "\:ff0c", 
+     RowBox[{
+     "u", " ", "and", " ", "v", " ", "are", " ", "geographical", " ", 
+      "coordinates"}], "\:ff0c", 
+     RowBox[{
+     "band", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", 
+      "geographical", " ", "weight", " ", "function"}], "\:ff0c", 
+     RowBox[{
+     "betaS", " ", "is", " ", "the", " ", "raw", " ", "estimates", " ", "set",
+       " ", "obtained", " ", "from", " ", "RawEs"}], ",", 
+     RowBox[{
+     "DATA", " ", "is", " ", "the", " ", "data", " ", "for", " ", 
+      "analysis"}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RawCv", "[", 
+      RowBox[{
+      "Tim_", ",", "tao_", ",", "d_", ",", "u_", ",", "v_", ",", "band_", ",",
+        "betaS_", ",", "DATA_"}], "]"}], ":=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"PaRawCv", "[", 
+        RowBox[{"u", ",", "v", ",", "band", ",", 
+         RowBox[{"betaS", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"betaS", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", "d", ",", 
+         RowBox[{"TNear", "[", 
+          RowBox[{
+           RowBox[{"Tim", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", "tao", ",", "DATA"}], "]"}], 
+         ",", 
+         RowBox[{"TNear", "[", 
+          RowBox[{
+           RowBox[{"Tim", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], ",", "tao", ",", "DATA"}], 
+          "]"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "Tim", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", 
+         RowBox[{"Length", "[", "Tim", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Polynomial", " ", "non"}], "-", 
+     RowBox[{"parametric", " ", "smoothing"}]}], "*)"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "RefineEs", " ", "gives", " ", "the", " ", "refined", " ", "estimates", 
+     " ", "of", " ", "GWTCLR"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "t", " ", "is", " ", "the", " ", "time", " ", "points", " ", "at", " ", 
+      "which", " ", "refined", " ", "estimates", " ", "of", " ", "GWTCLR", 
+      " ", "calculated"}], "\:ff0c", 
+     RowBox[{
+      RowBox[{
+      "p", " ", "is", " ", "the", " ", "order", " ", "of", " ", "the", " ", 
+       "Polynomial", " ", "non"}], "-", 
+      RowBox[{"parametric", " ", "smoothing"}]}], "\:ff0c", 
+     RowBox[{
+     "h", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", "the", " ",
+       "Polynomial", " ", "kernel", " ", "function"}], "\:ff0c", 
+     RowBox[{
+     "Tim", " ", "is", " ", "a", " ", "vector", " ", "with", " ", "elements", 
+      " ", "being", " ", "the", " ", "time", " ", "point", " ", "at", " ", 
+      "which", " ", "raw", " ", "estimates", " ", "of", " ", "GWTCLR", " ", 
+      "is", " ", "calculated"}], "\:ff0c", 
+     RowBox[{
+     "betaS", " ", "is", " ", "the", " ", "raw", " ", "estimates", " ", "set",
+       " ", "obtained", " ", "from", " ", "RawEs"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RefineEs", "[", 
+      RowBox[{"t_", ",", "p_", ",", "h_", ",", "Tim_", ",", "betaS_"}], "]"}],
+      ":=", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"DesM", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{"0", ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "0", ",", "p"}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", 
+            RowBox[{"Length", "[", "Tim", "]"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"DesM", "[", 
+           RowBox[{"[", "n", "]"}], "]"}], "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Tim", "[", 
+              RowBox[{"[", "n", "]"}], "]"}], "^", "m"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"m", ",", "0", ",", "p"}], "}"}]}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"n", ",", 
+           RowBox[{"Length", "[", "Tim", "]"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Omig", "=", 
+        RowBox[{"DiagonalMatrix", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Ker", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"t", "-", "l"}], ")"}], "/", "h"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"l", ",", "Tim"}], "}"}]}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"t", "^", "j"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", "0", ",", "p"}], "}"}]}], "]"}], ".", 
+        RowBox[{"Inverse", "[", 
+         RowBox[{
+          RowBox[{"Transpose", "[", "DesM", "]"}], ".", "Omig", ".", "DesM"}],
+          "]"}], ".", 
+        RowBox[{"Transpose", "[", "DesM", "]"}], ".", "Omig", ".", 
+        "betaS"}]}], ")"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"RefineVar", " ", "gives", " ", "the", " ", "variance"}], "-", 
+     RowBox[{
+     "covariance", " ", "of", " ", "the", " ", "refined", " ", 
+      "estimates"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "t", " ", "is", " ", "the", " ", "time", " ", "points", " ", "at", " ", 
+      "which", " ", "refined", " ", "estimates", " ", "of", " ", "GWTCLR", 
+      " ", "calculated"}], "\:ff0c", 
+     RowBox[{
+      RowBox[{
+      "p", " ", "is", " ", "the", " ", "order", " ", "of", " ", "the", " ", 
+       "Polynomial", " ", "non"}], "-", 
+      RowBox[{"parametric", " ", "smoothing"}]}], "\:ff0c", 
+     RowBox[{
+     "h", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", "the", " ",
+       "Polynomial", " ", "kernel", " ", "function"}], "\:ff0c", 
+     RowBox[{
+     "Tim", " ", "is", " ", "a", " ", "vector", " ", "with", " ", "elements", 
+      " ", "being", " ", "the", " ", "time", " ", "point", " ", "at", " ", 
+      "which", " ", "raw", " ", "estimates", " ", "of", " ", "GWTCLR", " ", 
+      "is", " ", "calculated"}], "\:ff0c", 
+     RowBox[{
+      RowBox[{"Cv", " ", "is", " ", "the", " ", "variance"}], "-", 
+      RowBox[{
+      "covariance", " ", "of", " ", "the", " ", "raw", " ", "estimates", " ", 
+       "set", " ", "obtained", " ", "from", " ", "RawCv"}]}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"RefineVar", "[", 
+     RowBox[{"t_", ",", "p_", ",", "h_", ",", "Tim_", ",", "Cv_"}], "]"}], ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"A", "=", "0"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"DesM", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{"0", ",", 
+           RowBox[{"{", 
+            RowBox[{"j", ",", "0", ",", "p"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{"Length", "[", "Tim", "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"DesM", "[", 
+          RowBox[{"[", "n", "]"}], "]"}], "=", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Tim", "[", 
+             RowBox[{"[", "n", "]"}], "]"}], "^", "m"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"m", ",", "0", ",", "p"}], "}"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", 
+          RowBox[{"Length", "[", "Tim", "]"}]}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Omig", "=", 
+       RowBox[{"DiagonalMatrix", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Ker", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"t", "-", "l"}], ")"}], "/", "h"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"l", ",", "Tim"}], "}"}]}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{"A", "+=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"t", "^", "j"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"j", ",", "0", ",", "p"}], "}"}]}], "]"}], ".", 
+            RowBox[{"Inverse", "[", 
+             RowBox[{
+              RowBox[{"Transpose", "[", "DesM", "]"}], ".", "Omig", ".", 
+              "DesM"}], "]"}], ".", 
+            RowBox[{"Transpose", "[", "DesM", "]"}], ".", 
+            RowBox[{"Omig", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], ")"}], "*", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"t", "^", "j"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"j", ",", "0", ",", "p"}], "}"}]}], "]"}], ".", 
+            RowBox[{"Inverse", "[", 
+             RowBox[{
+              RowBox[{"Transpose", "[", "DesM", "]"}], ".", "Omig", ".", 
+              "DesM"}], "]"}], ".", 
+            RowBox[{"Transpose", "[", "DesM", "]"}], ".", 
+            RowBox[{"Omig", "[", 
+             RowBox[{"[", "j", "]"}], "]"}]}], ")"}], "*", 
+          RowBox[{"Cv", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "j"}], "]"}], "]"}]}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "Tim", "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", "1", ",", 
+          RowBox[{"Length", "[", "Tim", "]"}]}], "}"}]}], "]"}], ";", "A"}], 
+     ")"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "PlotRefine", " ", "gives", " ", "the", " ", "graph", " ", "of", " ", 
+     "the", " ", "refined", " ", "estimates", " ", "of", " ", "GWTCLR", " ", 
+     "along", " ", "with", " ", "their", " ", "confidence", " ", "interval"}],
+     "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "a", " ", "is", " ", "the", " ", "lower", " ", "boundary", " ", "of", 
+      " ", "the", " ", "time", " ", "period"}], ",", 
+     RowBox[{
+     "b", " ", "is", " ", "the", " ", "upper", " ", "boundary", " ", "of", 
+      " ", "the", " ", "time", " ", "period"}], ",", 
+     RowBox[{
+     "n", " ", "means", " ", "that", " ", "we", " ", "are", " ", "drawing", 
+      " ", "the", " ", "nth", " ", "coefficiency"}], ",", 
+     RowBox[{
+      RowBox[{
+      "p", " ", "is", " ", "the", " ", "order", " ", "of", " ", "the", " ", 
+       "Polynomial", " ", "non"}], "-", 
+      RowBox[{"parametric", " ", "smoothing"}]}], "\:ff0c", 
+     RowBox[{
+     "h", " ", "is", " ", "the", " ", "bandwidth", " ", "of", " ", "the", " ",
+       "Polynomial", " ", "kernel", " ", "function"}], "\:ff0c", 
+     RowBox[{
+     "Tim", " ", "is", " ", "a", " ", "vector", " ", "with", " ", "elements", 
+      " ", "being", " ", "the", " ", "time", " ", "point", " ", "at", " ", 
+      "which", " ", "raw", " ", "estimates", " ", "of", " ", "GWTCLR", " ", 
+      "is", " ", "calculated"}], "\:ff0c", 
+     RowBox[{
+     "betaS", " ", "is", " ", "the", " ", "raw", " ", "estimates", " ", "set",
+       " ", "obtained", " ", "from", " ", "RawEs"}], ",", 
+     RowBox[{
+      RowBox[{"Cv", " ", "is", " ", "the", " ", "variance"}], "-", 
+      RowBox[{
+      "covariance", " ", "of", " ", "the", " ", "raw", " ", "estimates", " ", 
+       "set", " ", "obtained", " ", "from", " ", "RawCv"}]}]}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"PlotRefine", "[", 
+      RowBox[{
+      "a_", ",", "b_", ",", "n_", ",", "p_", ",", "h_", ",", "Tim_", ",", 
+       "betaS_", ",", "Cv_"}], "]"}], ":=", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"RefineEs", "[", 
+            RowBox[{"x", ",", "p", ",", "h", ",", "Tim", ",", "betaS"}], 
+            "]"}], "[", 
+           RowBox[{"[", "n", "]"}], "]"}], "-", 
+          RowBox[{"1.96", "*", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{
+             RowBox[{"RefineVar", "[", 
+              RowBox[{"x", ",", "p", ",", "h", ",", "Tim", ",", "Cv"}], "]"}],
+              "[", 
+             RowBox[{"[", 
+              RowBox[{"n", ",", "n"}], "]"}], "]"}], "]"}]}]}], ",", 
+         RowBox[{
+          RowBox[{"RefineEs", "[", 
+           RowBox[{"x", ",", "p", ",", "h", ",", "Tim", ",", "betaS"}], "]"}],
+           "[", 
+          RowBox[{"[", "n", "]"}], "]"}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"RefineEs", "[", 
+            RowBox[{"x", ",", "p", ",", "h", ",", "Tim", ",", "betaS"}], 
+            "]"}], "[", 
+           RowBox[{"[", "n", "]"}], "]"}], "+", 
+          RowBox[{"1.96", "*", 
+           RowBox[{"Sqrt", "[", 
+            RowBox[{
+             RowBox[{"RefineVar", "[", 
+              RowBox[{"x", ",", "p", ",", "h", ",", "Tim", ",", "Cv"}], "]"}],
+              "[", 
+             RowBox[{"[", 
+              RowBox[{"n", ",", "n"}], "]"}], "]"}], "]"}]}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "a", ",", "b"}], "}"}], ",", 
+       RowBox[{"Filling", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"1", "\[Rule]", 
+          RowBox[{"{", "3", "}"}]}], "}"}]}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Time", ",", "Beta"}], "}"}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], ";"}], 
+   "\n"}]}]], "Input",
+ CellChangeTimes->{{3.7086465251874113`*^9, 3.7086465646946707`*^9}}]
+},
+WindowSize->{1366, 686},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (2016\:5e748\:670817\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 119946, 3227, 7326, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
