@@ -1,5 +1,5 @@
 # GWTCLR
-This is a Mathematica coding of the geographically weighted temporally auto-correlated logistic regression (GTALR) method.
+This is a Mathematica coding of the geographically weighted temporally correlated logistic regression (GWTCLR) method.
 # Authors
 Yang Liu and Tommy Tsan-Yuk Lam
 # Introduction of GWTCLR
