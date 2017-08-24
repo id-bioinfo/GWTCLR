@@ -1,4 +1,11 @@
 (* ::Package:: *)
+(* :Title: GWTCLR *)
+(* :Author: Yang Liu, Tommy Lam *)
+(* :Date: 2017-04-01 *)
+
+(* :Package Version: 1.0 *)
+(* :Mathematica Version: 11 *)
+
 
 BeginPackage["GWTCLR`"]
 
