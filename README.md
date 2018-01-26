@@ -9,4 +9,4 @@ The coding file is divided into three parts. The first part gives a brief exampl
 # R Code for simulation
 The coding file is used to produce simulation data described in the paper. The data is saved in the CSV file and should be converted to XLSX file in order to be analyzed in Mathematica.
 # Acknowledgements
-This project is supported in part by Hong Kong Research Grants Council General Research Fund (17150816).
+The project described was supported by Theme-based Research Scheme (T11-705/14-N) from University Grants Committee of the HKSAR, and Award Number U54GM088558 from the National Institute of General Medical Sciences. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institute of General Medical Sciences or the National Institutes of Health.
